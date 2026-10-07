@@ -12,8 +12,10 @@ public class SensorTemperatura {
     }
 
     public void setUnidad(String unidad){
-        if (unidad != null && !unidad.trim().isEmpty())
-            this.unidad = unidad;
+        if (unidad != null && !unidad.isBlank())
+            if (unidad.toUpperCase().equals("C") || unidad.toUpperCase().equals("F"))
+                unidad = unidad.toUpperCase();
+                this.unidad = unidad;
     }
 
     public void setIdSensor(String idSensor){
@@ -36,6 +38,6 @@ public class SensorTemperatura {
     }
 
     public void mostrarLectura() {
-        System.out.println(getValorActual()+" "+getUnidad());
+        System.out.println("Temperatura: " +getValorActual()+" "+getUnidad());
     }
 }
